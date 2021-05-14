@@ -1,7 +1,7 @@
-    """[Command line usage]
-    from oop.oop1 import Account
-    ac1 = Account(100101011, 500, "savings")
-    """
+"""[Command line usage]
+from oop.oop1 import Account
+ac1 = Account(100101011, 500, "savings")
+"""
 
 from datetime import datetime
 
@@ -19,17 +19,19 @@ class Account:
 class MultiCurrencyAccount(Account):
     interest_rate = 0.01
 
-    def __init__(self, act_no, act_balance, type) -> None:
+    def __init__(self, act_no, act_balance, type, currencies) -> None:
+        self.currencies = currencies
         super().__init__(act_no=act_no, act_balance=act_balance, type=type)
 
 
 # print(Account.total_accounts)
-# accountA = Account(100101011, 500, "savings")
+# accountA = Account(100101011, 100, "savings")
 # print(Account.total_accounts)
 # print(accountA.interest_rate)
 # accountB = Account(100101012, 700, "savings")
 # print(Account.total_accounts)
-# accountC = MultiCurrencyAccount(555101011, 1000, "multi")
-# print(Account.total_accounts)
-# print(accountC.created_date)
+accountC = MultiCurrencyAccount(555101011, 1000, "multi", ['sgd', 'idr', 'usd'])
+print(Account.total_accounts)
+print(accountC.created_date)
+print(accountC.currencies)
 # print(accountC.interest_rate)
