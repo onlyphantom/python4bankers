@@ -61,7 +61,7 @@ Using `AVG()`, return the average loan amount for each combination of `purpose` 
 
 `MIN`, `MAX`, `SUM`, `COUNT`, and `AVG` are the five aggregation functions frequently used with `GROUP BY`.
 
-#### 7. Aggregation and GROUP BY
+#### 7. Using CAST AS to cast to another data type
 Since aggregation is commonly applied on numeric columns, this may present a little bit of problem when our columns are in character strings. You may alter the database table and change the column types, or you may use `CAST AS` to cast the column values from character to either `integer` or `decimal`.
 
 This exercise is similar to the one in (6), but this time make sure numeric columns are casted as numeric. 
