@@ -81,3 +81,21 @@
     # non-performing loans
     npl = [ln['case_number'] for ln in loans if ln['overdue_status'] or ln['due'] > 0]
     ```
+
+### SQL Primer
+
+```sql
+SELECT 
+    transaction_num, 
+    SUM(amount) AS Total,
+    COUNT(amount) As NumTransactions,
+    AVG(CAST(gst AS decimal)) AS AvgGST
+FROM creditcards
+WHERE 
+    amount > 50 OR
+    geo NOT IN ('Singapore', 'Indonesia') AND
+    terminal LIKE 'home%'
+GROUP BY transaction_num
+ORDER BY Total
+LIMIT 10 OFFSET 1
+```
