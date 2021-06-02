@@ -348,7 +348,22 @@ dictA<span class="token punctuation">[</span><span class="token string">&quot;ac
 npl <span class="token operator">=</span> <span class="token punctuation">[</span>ln<span class="token punctuation">[</span><span class="token string">&apos;case_number&apos;</span><span class="token punctuation">]</span> <span class="token keyword">for</span> ln <span class="token keyword">in</span> loans <span class="token keyword">if</span> ln<span class="token punctuation">[</span><span class="token string">&apos;overdue_status&apos;</span><span class="token punctuation">]</span> <span class="token keyword">or</span> ln<span class="token punctuation">[</span><span class="token string">&apos;due&apos;</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">]</span>
 </pre></li>
 </ol>
+<h3 class="mume-header" id="sql-primer">SQL Primer</h3>
 
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword">SELECT</span> 
+    transaction_num<span class="token punctuation">,</span> 
+    <span class="token function">SUM</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">AS</span> Total<span class="token punctuation">,</span>
+    <span class="token function">COUNT</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">As</span> NumTransactions<span class="token punctuation">,</span>
+    <span class="token function">AVG</span><span class="token punctuation">(</span>CAST<span class="token punctuation">(</span>gst <span class="token keyword">AS</span> <span class="token keyword">decimal</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> AvgGST
+<span class="token keyword">FROM</span> creditcards
+<span class="token keyword">WHERE</span> 
+    amount <span class="token operator">&gt;</span> <span class="token number">50</span> <span class="token operator">OR</span>
+    geo <span class="token operator">NOT</span> <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token string">&apos;Singapore&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Indonesia&apos;</span><span class="token punctuation">)</span> <span class="token operator">AND</span>
+    terminal <span class="token operator">LIKE</span> <span class="token string">&apos;home%&apos;</span>
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> transaction_num
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> Total
+<span class="token keyword">LIMIT</span> <span class="token number">10</span> <span class="token keyword">OFFSET</span> <span class="token number">1</span>
+</pre>
       </div>
       
       
