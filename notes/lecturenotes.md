@@ -99,3 +99,68 @@ GROUP BY transaction_num
 ORDER BY Total
 LIMIT 10 OFFSET 1
 ```
+
+### Data Analysis using Pandas
+
+1. Acquire the data
+```py
+import pandas as pd
+
+# create the connection
+pd.read_sql_query("SELECT * FROM loans", conn)
+
+loans = pd.read_csv("data_files/loans.csv")
+loans = pd.read_csv("data_files/loans.csv", 
+            index_col=['loan_id'],
+            parse_dates=['loan_approval_date', 'request_date']
+            )
+loans = pd.read_csv("https://developers.dbs.com/datafiles/2021/manual.csv")
+```
+
+2. Inspect the data
+
+```py
+nrow, ncol = loans.shape
+print(f'Data contains {nrow} rows and {ncol} columns')
+
+loans.head(3)
+loans.tail(3)
+
+loans.describe()
+loans['interest_rate'].describe()
+loans['interest_rate'].value_counts()
+loans['interest_rate'].value_counts(normalize=True, ascending=True)
+
+# you may need to combine this with simple indexing and slicing
+loans.select_dtypes(include=['int', 'float']).describe
+loans.select_dtypes(exclude=['int', 'float']).describe
+
+loans.plot()
+```
+
+3. Data Preparation
+Very commonly combined with indexing and slicing
+
+```py
+loans['nric'].astype('obj')
+loans.nric
+loans['nric']
+loans.loc[:, 'nric']
+loans.iloc[:, 5:]
+
+loans[
+    (loans['local_or_pr'] == True) &
+    (loans['num_of_dependents'] > 3)
+]
+
+loans.sort_value('num_of_dependents')
+loans.sort_value(['loan_amount', 'received_prin'])
+
+cond1 = loans['local_or_pr'] == True 
+cond2 = loans['num_of_dependents'] > 3 
+loans[cond1 & cond2]
+
+loans[
+    (loans['num_of_dependents'] > 3)
+]
+```
