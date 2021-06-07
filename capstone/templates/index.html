@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 col-lg-8 col-sm-10">
+				<br>
+				<br>
+				<h1 class="mb-2">
+					Loans Overview
+				</h1>
+				<h3>Productivity KPI: January 2015</h3>
+				<br>
+			</div>
+		</div>
+
+		<!-- Cards: Top page -->
+		<div class="row">
+			<div class="col-md-3 col-lg-3 col-sm-3">
+				<div class = "card card-stats">
+					<div class = "card-header">
+						<h4 class = "card-title">
+							{{card_data['num_applicants']}}
+						</h4>
+						<h5 class = "card-category">
+							No. Loan Applicants
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 col-sm-3">
+				<div class = "card card-stats">
+					<div class = "card-header">
+						<h4 class = "card-title">
+							{{card_data['avg_loan_amounts']}}
+						</h4>
+						<h5 class = "card-category">
+							Average Loan Amounts
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 col-sm-3">
+				<div class = "card card-stats">
+					<div class = "card-header">
+						<h4 class = "card-title">
+							{{card_data['good_loan']}}
+						</h4>
+						<h5 class = "card-category">
+							Good Loan Percentage
+						</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-lg-3 col-sm-3">
+				<div class = "card card-stats">
+					<div class = "card-header">
+						<h4 class = "card-title">
+							{{card_data['bad_loan']}}
+						</h4>
+						<h5 class = "card-category">
+							Bad Loan Percentage
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<!-- Tabs -->
+		<div class="row">
+			<div class="col-md-12 col-lg-12 col-sm-12">
+				<div class="tab">
+					<button class="tablinks" onclick="openTab(event, 'Overview') " id="defaultOpen">
+						Performance Overview
+					</button>
+					<button class="tablinks" onclick="openTab(event, 'Own')">
+						(Create-Your-Own)
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Tab: Overview -->
+		<div id="Overview" class="tabcontent">
+			<div class="row">
+				<div class="col-md-4 col-lg-4 col-sm-4">
+					<div class="img-container">
+					  <img src="data:image/png;base64,{{ plot_region_res }}" style="width:100%;">
+					</div>
+				</div>
+	
+				<div class="col-md-4 col-lg-4 col-sm-4">
+					<div class="img-container">
+					  <img src="data:image/png;base64,{{ plot_term_res }}" style="width:100%;">
+					</div>
+				</div>
+	
+				<div class="col-md-4 col-lg-4 col-sm-4">
+					<div class="img-container">
+					  <img src="data:image/png;base64,{{ plot_purpose_res }}" style="width:100%;">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Tab: Create Your Own -->
+		<div id="Own" class="tabcontent">
+			<!-- Define your own analysis -->
+		  </div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	function openTab(evt, idName) {
+		// Declare all variables
+		var i, tabcontent, tablinks;
+	
+		// Get all elements with class="tabcontent" and hide them
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+		}
+	
+		// Get all elements with class="tablinks" and remove the class "active"
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+	
+		// Show the current tab, and add an "active" class to the button that opened the tab
+		document.getElementById(idName).style.display = "block";
+		evt.currentTarget.className += " active";
+	
+	
+		}
+		document.getElementById("defaultOpen").click();	
+	</script>
+
+</html>
