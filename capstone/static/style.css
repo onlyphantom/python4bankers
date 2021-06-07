@@ -1,0 +1,101 @@
+body{
+    background: whitesmoke;
+    background-color: #333333;
+    color: white;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #333333;
+}
+
+
+/* Card Box */
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #b03610;
+    background-clip: border-box;
+    border: 1px solid white;
+    border-radius: 0.25rem;
+  }
+  
+  .card {
+    border: 0;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 6px;
+    color: white;
+    background: #b03610;
+    width: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+
+.img-container {
+    text-align: center;
+  }
+
+/* Plot Area*/
+.plot-area > .plot {
+    vertical-align: middle;
+    text-align: center;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 5% auto;
+    overflow: auto;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: white;
+  }
+
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: white;
+  color: black;
+  font-weight: 500;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #e5e5e5;
+  color: black
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #e5e5e5;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: white;
+  color: black
+  text-align: -webkit-center;
+}
+
+.plot-margin {
+    margin-left: auto;
+    margin-right: auto;
+}
